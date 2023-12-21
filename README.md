@@ -3,13 +3,21 @@ This is a personal project to demonstrate the development of a full stack data i
 
 This project is aimed at those searching for a way to get their feet wet with emerging technologies in the data world. The best part is that it's...wait for it...COMPLETELY FREE. Each of the tools utilized has either a free trial option (which permits users to access all features of the product within the trial period), or is OSS. I hope this can act as a fun and intuitive way to learn these incredibly useful tools as well as get comfortable with the core data engineering principles. 
 
+## Prerequisites
+- Basic experience with AWS platform.
+- Intermediate Python Expereince
+- Intermediate SQL experience
+
+That's it!
+
 ## Project Outline
 ### Prep
 Before getting to the good stuff, we have to provision and configure the cloud resources to host the OLTP database as well as the OLAP datawarehouse for our fictional rock climbing gym business. 
 #### OLTP Database
-We're going to set up an EC2 server on AWS using an AMI (AMI ID = ami-0d9f3eba66e776ff0) for our operational database for The Hanger. 
+We're going to set up an EC2 server on AWS using a PostgreSQL-specific Amazon Machine Image (AMI), which can be equated to a docker image, for our operational database for The Hanger. 
 
-In the EC2 configuration, search for the AMI using the ID above. 
+In the EC2 configuration, search for the AMI using the ID below.
+- `ami-0d9f3eba66e776ff0`
 
 Then, once the instance is deployed, connect in and follow [this](https://cloudinfrastructureservices.co.uk/how-to-setup-install-postgresql-server-on-azure-aws-gcp) *awesome* guide to configure the PostgreSQL server within the instance and set up pgadmin.
 
