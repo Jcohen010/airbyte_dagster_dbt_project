@@ -1,5 +1,5 @@
 # Overview
-A personal project to demonstrate the development of a full stack data infrastructure for the fictional commercial rock climbing chain "The Hanger", utilizing several open-source (OSS) tools.
+This is a personal project to demonstrate the development of a full stack data infrastructure for the fictional commercial rock climbing chain "The Hanger", utilizing several open-source (OSS) tools.
 
 This project can be carried out by anyone searching for a way to get their feet wet with emerging technologies in the data world for...wait for it...COMPLETELY FREE. Each of the tools used either have a free trial (which permits users to access all features of the product within the trial period), or is OSS. I hope it can act fun and intuitive way to learn and get comfortable with core data engineering principles. 
 
