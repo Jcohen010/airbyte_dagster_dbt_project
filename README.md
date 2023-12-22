@@ -32,13 +32,15 @@ CREATE USER extraction WITH ENCRYPTED PASSWORD 'MyStr0ngP@SS';
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO extraction;
 ```
 
+While we're in the postgres shell on the EC2 instance, let's configure the settings that will enable us to use CDC as our replication method later on in Airbyte. [This Airbyte docs section](https://docs.airbyte.com/integrations/sources/postgres#setup-using-cdc) will walk you through the process of getting this set up.
+
 
 #### OLAP Datawarehouse
 For the datawarehouse, we're going with Snowflake. Go [here](https://signup.snowflake.com/?utm_cta=trial-en-www-homepage-top-right-nav-ss-evg&_ga=2.74406678.547897382.1657561304-1006975775.1656432605&_gac=1.254279162.1656541671.Cj0KCQjw8O-VBhCpARIsACMvVLPE7vSFoPt6gqlowxPDlHT6waZ2_Kd3-4926XLVs0QvlzvTvIKg7pgaAqd2EALw_wcB) and create a free account (good for 30 days).
 
 ### Data Platform
 
-#### EL
+#### Integration Layer
 For the integration layer we are going to utilize a tool called Airbyte. While they offer a fully managed *Airbyte Cloud* product, we are going to take advantage of the OSS version of the product. Let's get it set up.
 
 - **Provision another EC2:** We are going to provision another EC2 instance that will act as our Airbyte server. This time we are going to use an AMI with docker all set up and ready to party (AMI ID = `ami-0082082ce02229f80`), as the Airbyte tool contains several services that work best if they are neatly seperated into their own container environments.
@@ -55,10 +57,17 @@ For the integration layer we are going to utilize a tool called Airbyte. While t
 
 - **Configuring Connections:** Now it's time to configure the source and destination connections that will permit us to replicate data from our PostgreSQL database to our Snowflake datawarehouse; have that connection information on hand...
 
+  PostgreSQL:
+  
+  1. In the Airbyte UI click "Create your first connection", the search for PostgreSQL.
+  2. Enter in your basic connection info (host, port, etc.)
+  3. When you get to the "Advanced" section, change the replication mode to Logical Replication (CDC), and enter the replication slot and publication we created in the prep section     of the project.
+  
 
 
 
-#### T
+
+#### Transformation Layer
 
 #### Orchestration
 
