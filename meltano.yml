@@ -1,0 +1,37 @@
+version: 1
+default_environment: dev
+project_id: fcd7abb7-6b59-4cbc-b0ed-7500b5953634
+environments:
+- name: dev
+- name: staging
+- name: prod
+plugins:
+  extractors:
+  - name: tap-postgres
+    variant: meltanolabs
+    pip_url: git+https://github.com/MeltanoLabs/tap-postgres.git
+    config:
+      database: thehangerdb
+      host: ec2-18-224-69-208.us-east-2.compute.amazonaws.com
+      port: 5432
+      user: postgres
+    select:
+    - public-routes.*
+    - public-routeclimbs.*
+    - public-members.*
+  loaders:
+  - name: target-snowflake
+    variant: meltanolabs
+    pip_url: meltanolabs-target-snowflake
+    config:
+      account: dkb10229.us-east-1
+      database: SOURCE
+      role: SYSADMIN
+      default_target_schema: THEHANGERDB
+      user: Jcohen010
+      warehouse: TRANSFORMED
+  - name: target-csv
+    variant: hotgluexyz
+    pip_url: git+https://github.com/hotgluexyz/target-csv.git
+    config:
+      destination_path: ./output
