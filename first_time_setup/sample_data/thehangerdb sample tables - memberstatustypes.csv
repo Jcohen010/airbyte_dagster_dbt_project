@@ -1,0 +1,4 @@
+member_status_type_id,member_status_type
+1,active
+2,cancelled
+3,frozen
