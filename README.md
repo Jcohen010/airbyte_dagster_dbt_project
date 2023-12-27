@@ -21,7 +21,7 @@ This project employs the following data engineering concepts and principles:
 - Version Control
 - Continuous Integration & Continuous Delivery/Deployment (CI/CD)
 - Dimensional Data Modelling
-- 
+- ***MORE***
 
 ## Teaching Approach
 Unlike a lot of other “follow along” data engineering projects, I’m actually going to encourage you not to clone this repo onto your local machine. As this project emphasizes the development process of the infrastructure of a small scale data platform, I wrote the guide in a way that allows you to essentially start from scratch with your own blank project repo and execute the steps I myself followed that ultimately yielded this very repository. 
@@ -125,5 +125,8 @@ For the datawarehouse, we're going with Snowflake. Go [here](https://signup.snow
 ### Setting up Analytics
 
 ### CI/CD
+#### SQL Linting
+#### Tests
+
 
 
