@@ -1,19 +1,76 @@
-# Overview
-This is a personal project to demonstrate the development of a full stack data infrastructure for the fictional commercial rock climbing chain "The Hanger", utilizing several open-source (OSS) and cloud tools.
+# Intro
+This is a project to demonstrate the development of a small scale data infrastructure, following a layer based methodology that seems to be emerging as a best-practice approach in the industry. This infrastructure will support the fictional commercial rock climbing chain "The Hanger", and will utilize several open-source (OSS) and cloud tools. The project is aimed at those searching for a way to get their feet wet with emerging technologies in the data world. I hope it can act as a fun and intuitive way to learn the tooling and get comfortable with core data engineering principles. 
 
-This project is aimed at those searching for a way to get their feet wet with emerging technologies in the data world. The best part is that it's...wait for it...COMPLETELY FREE. Each of the tools utilized has either a free trial option (which permits users to access all features of the product within the trial period), or is OSS. I hope this can act as a fun and intuitive way to learn these incredibly useful tools as well as get comfortable with the core data engineering principles. 
+Let's first go over a few aspects of the project:
+
+## Cost
+This project can be completed with paying a penny. Each of the tools utilized has either a free trial option (which permits users to access all features of the product within the trial period), or is OSS. That being said, if, like me, you're poorer than most in computing power (im developing on a measly 2020 MacBook Air) you can choose to cloud host certain resources, such as the PostgreSQL OLTP server.
 
 ## Prerequisites
+Possessing these prereqs will lead to less friction in building the project, however this project can also act as a way to move towards these experience levels.
 - Basic experience with AWS platform
 - Intermediate Python Expereince
 - Intermediate SQL experience
 - Basic experience and understanding of Docker
 
-That's it!
+## Task Management
+As I was building this project, I used Notion to keep track of my tasks. I realized it could act as a pretty usefull guide for others carrying out the project, so I publically published the notion page as a static site. Head to [the site](https://sparkly-boat-650.notion.site/The-Hanger-Data-Project-44c06800698b4bedbe9958c1d719de17?pvs=4) and click the copy icon in top right corner to duplicate the page into one of your own notion workspaces (if you don't have an account, you should be prompted to create one first). Then change the status to all of the Epics, Tasks, and Sub-tasks to `Not-Started` and start working! (Ignore, filer out or even, if you want, delete the tasks related to documentation.)
 
-## Project Outline
-### Prep
+## Concepts Involved
+This project employs the following data engineering concepts and principles:
+- Version Control
+- Continuous Integration & Continuous Delivery/Deployment (CI/CD)
+- Dimensional Data Modelling
+- ***MORE***
+
+## Teaching Approach
+Unlike a lot of other “follow along” data engineering projects, I’m actually going to encourage you not to clone this repo onto your local machine. As this project emphasizes the development process of the infrastructure of a small scale data platform, I wrote the guide in a way that allows you to essentially start from scratch with your own blank project repo and execute the steps I myself followed that ultimately yielded this very repository. Another important note: the guide section below is not a step by step walkthrough; I find that projects that hold your hand throughout the development process greatly limit the value you can get from them. Expect to run into some errors or moments of uncertainty; the extra depth of understanding you will gain about the tools from the act of debugging their issues, consulting their documentation, etc., will be well worth it.
+
+With all that out of the way, let’s get started with the project outline.
+
+---
+
+# Project Outline
+
+`Diagram`
+
+
+## Storage
+### OLTP
+
+### OLAP
+
+
+## Integration Layer
+For the integration layer we are going to utilize a tool called Meltano. While they offer a fully managed *Meltano Cloud* product, we are going to take advantage of the OSS version of the product.
+
+## Transformation Layer
+For the transformation layer, we're going with dbt. 
+
+
+## Orchestration
+
+## Analytics
+
+
+
+
+
+
+
+
+
+## Project Guide
+
+> [!NOTE]  
+> As mentioned in the introduction, this guide is not a step by step walkthrough. Sections of the project are logically partitioned, and the major tasks and sub-tasks that must be 
+> ticked before moving from one section to the next are clearly described.
+
+
+
+### Storage
 Before getting to the good stuff, we have to provision and configure the cloud resources to host the OLTP database as well as the OLAP datawarehouse for our fictional rock climbing gym business. 
+
 #### OLTP Database
 We're going to set up an EC2 server on AWS using a PostgreSQL-specific Amazon Machine Image (AMI), which can be equated to a docker image, for our operational database for The Hanger. 
 
@@ -42,40 +99,48 @@ While we're in the postgres shell on the EC2 instance, let's configure the setti
 #### OLAP Datawarehouse
 For the datawarehouse, we're going with Snowflake. Go [here](https://signup.snowflake.com/?utm_cta=trial-en-www-homepage-top-right-nav-ss-evg&_ga=2.74406678.547897382.1657561304-1006975775.1656432605&_gac=1.254279162.1656541671.Cj0KCQjw8O-VBhCpARIsACMvVLPE7vSFoPt6gqlowxPDlHT6waZ2_Kd3-4926XLVs0QvlzvTvIKg7pgaAqd2EALw_wcB) and create a free account (good for 30 days).
 
-### Data Platform
-
-#### Integration Layer
-For the integration layer we are going to utilize a tool called Airbyte. While they offer a fully managed *Airbyte Cloud* product, we are going to take advantage of the OSS version of the product. Let's get it set up.
-
-- **Provision another EC2:** We are going to provision another EC2 instance that will act as our Airbyte server. This time we are going to use an AMI with docker all set up and ready to party (AMI ID = `ami-0082082ce02229f80`), as the Airbyte tool contains several services that work best if they are neatly seperated into their own container environments.
-
-- **Airbyte Deployment:** Once the instance is all set up, connect into the server and follow [this guide](https://docs.airbyte.com/deploying-airbyte/on-aws-ec2) to deploy airbyte. (NOTE: Given the AIM we are using, in step 2 of “Set up the Environment” only run:
-
-  ```
-  sudo service docker start
-  sudo usermod -a -G docker $USER
-  ```
-  Also, no need to perform step 3.
-
-  When you've accessed the Airbyte UI in your browser (credentials will be Username = `Airbyte` and Password = `Password`), follow the steps and enter your email and the company name ("The Hanger" for this project) to arrive at   admin dashboard.
-
-- **Configuring Connections:** Now it's time to configure the source and destination connections that will permit us to replicate data from our PostgreSQL database to our Snowflake datawarehouse; have that connection information on hand...
-
-  PostgreSQL:
-  
-  1. In the Airbyte UI click "Create your first connection", the search for PostgreSQL.
-  2. Enter in your basic connection info (host, port, etc.)
-  3. When you get to the "Advanced" section, change the replication mode to Logical Replication (CDC), and enter the replication slot and publication we created in the prep section     of the project.
-  
+### Create Project Repo
 
 
 
+### Setting up the Integration Layer 
+#### Install
+#### Init
+#### Tap Config
+#### Target Config
+#### Test
+#### Change replication method CDC (Log-based Replication)
+#### Re-Test
 
-#### Transformation Layer
+### Setting up the Transformation Layer
+#### Install
+#### Init
+#### Test Connection
+#### Re-organize Models folder
+#### Build Models
 
-#### Orchestration
+##### override database targets for staging and prod models.
 
-#### Analytics
+[workshop this] 
+The design construction of these models is typically a joint effort between the data team and the stakeholders, so in this case just try and be creative and think of some questions that the fictional stakeholder might want to answer about the gym 
+- How many members visit daily weekly etc
+- What member has the highest visit rate 
+- What route has the highest rating on 
+
+
+#### Test dbt-run
+#### Create Environments/Targets
+
+
+### Setting up Orchestration
+#### Install
+#### Init
+
+### Setting up Analytics
+
+### CI/CD
+#### SQL Linting
+#### Tests
 
 
 
