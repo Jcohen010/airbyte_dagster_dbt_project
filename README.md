@@ -24,7 +24,7 @@ This project employs the following data engineering concepts and principles:
 - ***MORE***
 
 ## Teaching Approach
-Unlike a lot of other “follow along” data engineering projects, I’m actually going to encourage you not to clone this repo onto your local machine. As this project emphasizes the development process of the infrastructure of a small scale data platform, I wrote the guide in a way that allows you to essentially start from scratch with your own blank project repo and execute the steps I myself followed that ultimately yielded this very repository. 
+Unlike a lot of other “follow along” data engineering projects, I’m actually going to encourage you not to clone this repo onto your local machine. As this project emphasizes the development process of the infrastructure of a small scale data platform, I wrote the guide in a way that allows you to essentially start from scratch with your own blank project repo and execute the steps I myself followed that ultimately yielded this very repository. Another important note: the guide section below is not a step by step walkthrough; I find that projects that hold your hand throughout the development process greatly limit the value you can get from them. Expect to run into some errors or moments of uncertainty; the extra depth of understanding you will gain about the tools from the act of debugging their issues, consulting their documentation, etc., will be well worth it.
 
 With all that out of the way, let’s get started with the project outline.
 
@@ -60,7 +60,11 @@ For the transformation layer, we're going with dbt.
 
 
 
-## Embark
+## Project Guide
+
+> [!NOTE]  
+> As mentioned in the introduction, this guide is not a step by step walkthrough. Sections of the project are logically partitioned, and the major tasks and sub-tasks that must be 
+> ticked before moving from one section to the next are clearly described.
 
 
 
@@ -115,11 +119,13 @@ For the datawarehouse, we're going with Snowflake. Go [here](https://signup.snow
 #### Re-organize Models folder
 #### Build Models
 
+##### override database targets for staging and prod models.
+
 [workshop this] 
 The design construction of these models is typically a joint effort between the data team and the stakeholders, so in this case just try and be creative and think of some questions that the fictional stakeholder might want to answer about the gym 
-- [ ] How many members visit daily weekly etc
-- [ ] What member has the highest visit rate 
-- [ ] What route has the highest rating on 
+- How many members visit daily weekly etc
+- What member has the highest visit rate 
+- What route has the highest rating on 
 
 
 #### Test dbt-run
