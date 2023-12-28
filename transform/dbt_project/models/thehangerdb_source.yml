@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: thehangerdb
+    database: source  
+    schema: thehangerdb  
+    tables:
+      - name: members
+      - name: routes
+      - name: routeclimbs
+      - name: memberaddresses
+      - name: climbingsessions
+      - name: memberstatustypes
+      - name: climbinggrades
+      - name: membertypes
+      - name: addressstati
+      - name: routecolors
