@@ -12,13 +12,22 @@ plugins:
     pip_url: git+https://github.com/MeltanoLabs/tap-postgres.git
     config:
       database: thehangerdb
-      host: ec2-18-224-69-208.us-east-2.compute.amazonaws.com
+      host: ec2-18-224-55-165.us-east-2.compute.amazonaws.com
       port: 5432
       user: postgres
+      default_replication_method: LOG_BASED
     select:
     - public-routes.*
     - public-routeclimbs.*
     - public-members.*
+    - public-memberaddresses.*
+    - public-climbingsessions.*
+    - public-memberstatustypes.*
+    - public-climbinggrades.*
+    - public-membertypes.*
+    - public-addressstati.*
+    - public-routecolors.*
+  
   loaders:
   - name: target-snowflake
     variant: meltanolabs
