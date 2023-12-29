@@ -7,6 +7,9 @@ sources:
     tables:
       - name: members
       - name: routes
+        meta:
+          dagster:
+            asset_key: ["routes"]
       - name: routeclimbs
       - name: memberaddresses
       - name: climbingsessions

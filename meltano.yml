@@ -16,6 +16,8 @@ plugins:
       port: 5432
       user: postgres
       default_replication_method: LOG_BASED
+      filter_schemas:
+      - public
     select:
     - public-routes.*
     - public-routeclimbs.*
@@ -27,7 +29,7 @@ plugins:
     - public-membertypes.*
     - public-addressstati.*
     - public-routecolors.*
-  
+
   loaders:
   - name: target-snowflake
     variant: meltanolabs
@@ -44,3 +46,14 @@ plugins:
     pip_url: git+https://github.com/hotgluexyz/target-csv.git
     config:
       destination_path: ./output
+  files:
+  - name: files-airflow
+    variant: meltano
+    pip_url: git+https://github.com/meltano/files-airflow.git
+jobs:
+- name: thehangerdb-snowflake-dbt
+  tasks:
+  - tap-postgres target-snowflake
+  - dbt-snowflake:run
+
+
