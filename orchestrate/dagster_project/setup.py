@@ -10,7 +10,8 @@ setup(
         "dagster-dbt",
         "dbt-core>=1.4.0",
         "dbt-snowflake",
-        "dagster-meltano"
+        "dagster-meltano",
+        "dagster-fivetran"
     ],
     extras_require={
         "dev": [

@@ -104,13 +104,10 @@ For the datawarehouse, we're going with Snowflake. Go [here](https://signup.snow
 
 
 ### Setting up the Integration Layer 
-#### Install
-#### Init
-#### Tap Config
-#### Target Config
-#### Test
-#### Change replication method CDC (Log-based Replication)
-#### Re-Test
+#### Create Fivetran Account
+#### Create Source Connection
+#### Create Destination Connection
+#### Run Initial Sync
 
 ### Setting up the Transformation Layer
 #### Install
@@ -134,13 +131,18 @@ The design construction of these models is typically a joint effort between the 
 
 ### Setting up Orchestration
 #### Install
-#### Init
-
-### Setting up Analytics
+#### Init Dagster Project
+#### Import dbt models as assets 
+#### Import fivetran integrations as assets
+#### Create dependency link between fivetran assets and dbt assets
+##### Change dbt assets group name
+#### Create Job and Schedule of pipeline
 
 ### CI/CD
 #### SQL Linting
 #### Tests
+
+### Setting up Analytics
 
 
 
