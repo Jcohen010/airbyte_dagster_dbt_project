@@ -1,5 +1,5 @@
 > [!WARNING]  
-> THIS IS A BASIC DEVELOPMENT PROJECT. WHILE IT DOES EMPLOY SEVERAL BEST PRACTICES, IT SHOULD NOT BE USED AS A 1:1 MODEL FOR PROJECTS BEING DEPLOYED IN A PRODUCTION ENVIRONMENT.
+> This is a basic development project. While it does employ several best practices, it was not created as a 1:1 model for projects being deplooyed in a production environment.
 
 # Intro
 This is a project to demonstrate the development of a small scale data infrastructure, following a layer based methodology that seems to be emerging as a best-practice approach in the industry. This infrastructure will support the fictional commercial rock climbing chain "The Hanger", and will utilize several open-source (OSS) and cloud tools. The project is aimed at those searching for a way to get their feet wet with emerging technologies in the data world. I hope it can act as a fun and intuitive way to learn the tooling and get comfortable with core data engineering principles. 
