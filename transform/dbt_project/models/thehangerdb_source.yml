@@ -3,18 +3,45 @@ version: 2
 sources:
   - name: thehangerdb
     database: source  
-    schema: thehangerdb  
+    schema: thehangerdb_public
     tables:
       - name: members
+        meta:
+          dagster:
+            asset_key: ["thehangerdb_public", "members"]
       - name: routes
         meta:
           dagster:
-            asset_key: ["routes"]
+            asset_key: ["thehangerdb_public", "routes"]
       - name: routeclimbs
+        meta:
+          dagster:
+            asset_key: ["thehangerdb_public", "routeclimbs"]
       - name: memberaddresses
+        meta:
+          dagster:
+            asset_key: ["thehangerdb_public", "memberaddresses"]
       - name: climbingsessions
+        meta:
+          dagster:
+            asset_key: ["thehangerdb_public", "climbingsessions"]
       - name: memberstatustypes
+        meta:
+          dagster:
+            asset_key: ["thehangerdb_public", "memberstatustypes"]
       - name: climbinggrades
+        meta:
+          dagster:
+            asset_key: ["thehangerdb_public", "climbinggrades"]
       - name: membertypes
+        meta:
+          dagster:
+            asset_key: ["thehangerdb_public", "membertypes"]
       - name: addressstati
+        meta:
+          dagster:
+            asset_key: ["thehangerdb_public", "addressstati"]
       - name: routecolors
+        meta:
+          dagster:
+            asset_key: ["thehangerdb_public", "routecolors"]

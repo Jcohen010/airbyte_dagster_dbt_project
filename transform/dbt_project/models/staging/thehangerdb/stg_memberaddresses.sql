@@ -7,7 +7,8 @@ staged AS (
     SELECT member_id,
         address,
         state,
-        postal_code	city,
+        postal_code,
+        city,
         country,
         address_status
     FROM source

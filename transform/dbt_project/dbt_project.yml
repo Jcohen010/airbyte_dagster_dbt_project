@@ -39,6 +39,5 @@ models:
 
     prod:
       +materialized: view
-      +database: prod
-      +schema: public
+      +database: prod      
       
